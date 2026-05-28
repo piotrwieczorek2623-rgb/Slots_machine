@@ -1,0 +1,29 @@
+Maszyna hazardowa SlotsMachine (Jednoręki Bandyta)
+
+Aplikacja symuluje działanie maszyny hazardowej jednoreki bandyta.
+uzytkownik startuje z saldem 1000 kredytów i obstawia zakład.
+
+Zasady:
+Wygrana gdy maszyna wylosuje 3 takie same symbole(lub bombę).
+
+Każdy symbol ma inny mnożnik i wagę(sterowanie prawdopodobieństwem losowania):
+
+owoce:
+Cytryna - X3, waga 50
+Wiśnia - X4, waga 40
+Śliwka - X5, waga 30
+Symbole Specjalne:
+Bomba:
+waga 10,
+Gdy jedna bomba w losowaniu - Suma pozostałych symboli
+Gdy dwie bomby w losowaniu - Mnożnik ostatniego symbolu Dzieli sie na 2
+Gdy trzy bomby w losowaniu - uzytkownik traci dwukrotność zakładu.
+
+Gracz nie może ustawić zakładu wyższego niż saldo oraz betu =<0.
+
+Gra toczy się dopóki gracz nie zbankrutuje.
+
+
+
+
+
