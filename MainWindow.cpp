@@ -285,8 +285,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
                                  QLabel *reels[3] = {reel1, reel2, reel3};
                                  for (int i = 0; i < spin.size() && i < 3; i++)
                                  {
-                                   QString path =
-                                       ":/images/" + QString::fromStdString(spin[i]->getName()) + ".png";
+                                   QString path = QString::fromStdString(spin[i]->getPath());
+                                       //":/images/" + QString::fromStdString(spin[i]->getName()) + ".png";
 
                                    QPixmap symbolPixmap(path);
                                    reels[i]->setPixmap(symbolPixmap.scaled(

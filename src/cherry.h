@@ -6,4 +6,5 @@ class Cherry : public Fruit
 public:
     Cherry();
     ~Cherry() override = default;
+    std::string getPath() const override;
 };

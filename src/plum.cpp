@@ -2,3 +2,4 @@
 
 // Plum przekazuje "twarde" dane do konstruktora klasy Fruit
 Plum::Plum() : Fruit("Plum", 5, 30) {}
+std::string Plum::getPath() const { return ":/images/Plum.png"; };

@@ -18,11 +18,6 @@ Drum::Drum(int drums_quantity_)
   symbols.push_back(new Plum());
   symbols.push_back(new Bomb());
   symbols.push_back(new Seven());
-  // symbols.push_back(new Fruit("Lemon", 3, 50));
-  // symbols.push_back(new Fruit("Cherry", 4, 40));
-  // symbols.push_back(new Fruit("Plum", 5, 30));
-  // symbols.push_back(new SpecialSymbol("Bomb", 0, 8));
-  // symbols.push_back(new SpecialSymbol("Seven", 77, 3));
   srand(time(NULL));
 }
 
