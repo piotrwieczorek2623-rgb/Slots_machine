@@ -35,20 +35,16 @@ Drum::~Drum()
 Symbol *Drum::randSymbol()
 {
   int totalWeight = 0;
-
   for (Symbol *symbol : symbols)
   {
     totalWeight += symbol->getWeight();
   }
-
   int randomValue = rand() % totalWeight;
-
   int currentWeight = 0;
 
   for (Symbol *symbol : symbols)
   {
     currentWeight += symbol->getWeight();
-
     if (randomValue < currentWeight)
     {
       return symbol;
@@ -116,12 +112,6 @@ int Drum::calculateWin(int bet) const
 
   return (bet * curr_spin[0]->calculateMultiplier(curr_spin));
 }
-// int Drum::calculateWin(int bet) const
-// {
-//   if (!isWin())
-//     return 0;
-//   return (bet * curr_spin[0]->getMultiplier());
-// }
 
 int Drum::win(int bet)
 {

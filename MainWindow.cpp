@@ -46,8 +46,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
   player->setAudioOutput(audioOutput);
   player->setVideoOutput(videoWidget);
 
-  // MP4 z resources NIE działa dobrze → użyj pliku z dysku
-  // player->setSource(QUrl::fromLocalFile(":/videos/animation_spin_machine.mp4"));
+  // MP4 z resources
   QString videoPath = QDir(QCoreApplication::applicationDirPath())
                           .filePath("../resources/videos/spin.mp4");
 
@@ -100,14 +99,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
   reel2->setFixedSize(300, 300);
   reel3->setFixedSize(300, 300);
 
-  // windows symbol layout
-  //  reel1->move(165, 225);
-  //  reel2->move(405, 225);
-  //  reel3->move(650, 225);
-
-  // wyglada jakby ten układ wogole nie mial znaczenia xd
-
-  // linux symbol layout
+  //Symbol layout
   reel1->move(265, 260);
   reel2->move(505, 260);
   reel3->move(750, 260);
@@ -286,8 +278,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
                                  for (int i = 0; i < spin.size() && i < 3; i++)
                                  {
                                    QString path = QString::fromStdString(spin[i]->getPath());
-                                       //":/images/" + QString::fromStdString(spin[i]->getName()) + ".png";
-
                                    QPixmap symbolPixmap(path);
                                    reels[i]->setPixmap(symbolPixmap.scaled(
                                        reels[i]->size(), Qt::KeepAspectRatio, Qt::FastTransformation));
