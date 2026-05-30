@@ -1,3 +1,3 @@
 build/
-resources/docs/zalozenia_projektu.txt
-resources/docs/.~lock.dokumentacja_slots_machine.docx#
+resources/docs/zalozenia_projektu*
+.~lock.*#
