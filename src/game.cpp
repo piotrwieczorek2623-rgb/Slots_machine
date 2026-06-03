@@ -12,21 +12,21 @@ int Game::playRound()
   if (bet > credits) // allow only possible bets
     return -999;
 
-  // credits -= bet;
+  credits -= bet;
   drum.spin();
 
   int prize = drum.win(bet);
 
   if (prize > 0)
     credits += prize;
-  else if (prize < 0)
-  {
-    credits += prize; // prize jest ujemny, więc odejmuje
-  }
-  else
-  {
-    credits -= bet;
-  }
+  // else if (prize < 0)
+  // {
+  //   credits += prize; // prize jest ujemny, więc odejmuje
+  // }
+  // else
+  // {
+  //   credits -= bet;
+  // }
 
   return prize;
 }

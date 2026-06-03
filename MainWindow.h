@@ -12,6 +12,7 @@
 #include <QVideoWidget>
 #include <QWidget>
 #include <QSoundEffect>
+#include <QStackedWidget>
 
 class MainWindow : public QMainWindow
 {
@@ -54,9 +55,22 @@ private:
   void fadeWidget(QWidget *widget, int start, int end, int duration); // fade
   void startSpinAnimation();                                          // START ANIMACJI
 
+
+  //menu
+  Game *gameLogic;
+  QStackedWidget *stackedWidget;
+  QWidget *menuWidget;
+  QLabel *titleLabel;
+  QPushButton *playButton;
+  QWidget *gameWidget;
+  void setupMenuUi(); 
+  void setupGameUi();
+
 public:
   MainWindow(QWidget *parent = nullptr);
 
 protected:
   void resizeEvent(QResizeEvent *event) override; // resize
+private slots:
+  void onPlayClicked();
 };
