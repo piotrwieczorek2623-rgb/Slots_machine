@@ -15,6 +15,6 @@ public:
   std::string getName() const;
   int getMultiplier() const;
   int getWeight() const;
-  //nie dodaje =0 na koncu aby byla standardowa definicja funkcji
+  // nie dodaje =0 na koncu aby byla standardowa definicja funkcji
   virtual int calculateMultiplier(const std::vector<Symbol *> &spin) const;
 };

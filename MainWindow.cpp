@@ -99,7 +99,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
   reel2->setFixedSize(300, 300);
   reel3->setFixedSize(300, 300);
 
-  //Symbol layout
+  // Symbol layout
   reel1->move(265, 260);
   reel2->move(505, 260);
   reel3->move(750, 260);
@@ -280,7 +280,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
                                    QString path = QString::fromStdString(spin[i]->getPath());
                                    QPixmap symbolPixmap(path);
                                    reels[i]->setPixmap(symbolPixmap.scaled(
-                                       reels[i]->size(), Qt::KeepAspectRatio, Qt::FastTransformation));
+                                   reels[i]->size(), Qt::KeepAspectRatio, Qt::FastTransformation));
                                  } }); });
 }
 
