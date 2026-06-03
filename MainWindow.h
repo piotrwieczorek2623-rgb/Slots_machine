@@ -13,6 +13,7 @@
 #include <QWidget>
 #include <QSoundEffect>
 #include <QStackedWidget>
+#include <QVBoxLayout>
 
 class MainWindow : public QMainWindow
 {
@@ -55,16 +56,23 @@ private:
   void fadeWidget(QWidget *widget, int start, int end, int duration); // fade
   void startSpinAnimation();                                          // START ANIMACJI
 
+  QVBoxLayout *panelLayout;
 
   //menu
   Game *gameLogic;
   QStackedWidget *stackedWidget;
-  QWidget *menuWidget;
+  
   QLabel *titleLabel;
   QPushButton *playButton;
+  QPushButton *infoButton;
   QWidget *gameWidget;
+  QWidget *menuWidget;
+  QWidget *infoWidget;
   void setupMenuUi(); 
   void setupGameUi();
+  void setupInfoUi();
+  void transitionFromMenuToGame();
+  void transitionFromGameToMenu();
 
 public:
   MainWindow(QWidget *parent = nullptr);
