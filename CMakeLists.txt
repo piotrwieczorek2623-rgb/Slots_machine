@@ -11,8 +11,13 @@ qt_standard_project_setup()
 
 qt_add_executable(SlotsMachine
     main.cpp
-    MainWindow.h
-    MainWindow.cpp
+    gui/MainWindow.h
+    gui/MainWindow.cpp
+    gui/Animations.cpp
+    gui/Messages.cpp
+    gui/MenuUi.cpp
+    gui/InfoUi.cpp
+    gui/GameUi.cpp
     src/drum.cpp
     src/symbol.cpp
     src/specialsymbol.cpp

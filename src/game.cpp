@@ -19,15 +19,6 @@ int Game::playRound()
 
   if (prize > 0)
     credits += prize;
-  // else if (prize < 0)
-  // {
-  //   credits += prize; // prize jest ujemny, więc odejmuje
-  // }
-  // else
-  // {
-  //   credits -= bet;
-  // }
-
   return prize;
 }
 

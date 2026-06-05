@@ -94,7 +94,6 @@ bool Drum::isWin() const
   return true;
 }
 
-// win dla roznych symboli
 int Drum::calculateWin(int bet) const
 {
   if (!isWin())

@@ -1,19 +1,31 @@
 #pragma once
 
-#include "src/game.h"
-#include <QGraphicsOpacityEffect>
-#include <QLabel>
-#include <QLineEdit>
+#include "../src/game.h"
 #include <QMainWindow>
 #include <QMediaPlayer>
 #include <QParallelAnimationGroup>
-#include <QPushButton>
 #include <QResizeEvent>
 #include <QVideoWidget>
 #include <QWidget>
 #include <QSoundEffect>
-#include <QStackedWidget>
+#include <QAudioOutput>
+#include <QCoreApplication>
+#include <QDir>
+#include <QEasingCurve>
+#include <QFont>
+#include <QGraphicsOpacityEffect>
+#include <QHBoxLayout>
+#include <QKeySequence>
+#include <QLabel>
+#include <QLineEdit>
+#include <QPixmap>
+#include <QPropertyAnimation>
+#include <QPushButton>
+#include <QShortcut>
+#include <QTimer>
 #include <QVBoxLayout>
+#include <QFile>
+#include <QStackedWidget>
 
 class MainWindow : public QMainWindow
 {
@@ -58,21 +70,24 @@ private:
 
   QVBoxLayout *panelLayout;
 
-  //menu
+  // menu
   Game *gameLogic;
   QStackedWidget *stackedWidget;
-  
-  QLabel *titleLabel;
+
+  QLabel *titleMenuLabel;
+  QLabel *titleInfoLabel;
   QPushButton *playButton;
   QPushButton *infoButton;
+  QPushButton *returnToMenuButton;
   QWidget *gameWidget;
   QWidget *menuWidget;
   QWidget *infoWidget;
-  void setupMenuUi(); 
+  void setupMenuUi();
   void setupGameUi();
   void setupInfoUi();
   void transitionFromMenuToGame();
   void transitionFromGameToMenu();
+  void transitionFromMenuToInfo();
 
 public:
   MainWindow(QWidget *parent = nullptr);
@@ -81,4 +96,12 @@ protected:
   void resizeEvent(QResizeEvent *event) override; // resize
 private slots:
   void onPlayClicked();
+  void onInfoClicked();
+};
+
+enum ScreenIndex
+{
+  MenuScene = 0,
+  GameScene = 1,
+  InfoScene = 2
 };
