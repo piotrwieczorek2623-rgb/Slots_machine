@@ -19,9 +19,8 @@ void MainWindow::setupInfoUi()
     titleInfoLabel->setAlignment(Qt::AlignCenter);
     titleInfoLabel->setStyleSheet("color: #e9e9e9;");
 
-
-    //FIXME
-    // infoLayout->addStretch();
+    // FIXME
+    //  infoLayout->addStretch();
 
     // przycisk return to menu
     returnToMenuButton = new QPushButton("RETURN TO MENU", menuWidget);
@@ -47,9 +46,34 @@ void MainWindow::setupInfoUi()
 
     infoLayout->addWidget(titleInfoLabel);
     infoLayout->addWidget(returnToMenuButton, 0, Qt::AlignBottom | Qt::AlignLeft);
+    connect(returnToMenuButton, &QPushButton::clicked, this, &MainWindow::onReturnInfoClicked);
 }
 
 void MainWindow::onInfoClicked()
 {
     transitionFromMenuToInfo();
+}
+
+void MainWindow::onReturnInfoClicked()
+{
+    transitionFromInfoToMenu();
+}
+
+// info -> menu
+void MainWindow::transitionFromInfoToMenu()
+{
+    // fade out elementów info
+    fadeWidget(returnToMenuButton, 100, 0, 350);
+    fadeWidget(titleInfoLabel, 100, 0, 350);
+    playButton->setEnabled(true);
+
+    // Po wygaszeniu kontrolek (350ms) czyścimy ekran, resetujemy grę i płynnie wchodzimy do menu
+    QTimer::singleShot(350, this, [this]()
+                       {
+                           stackedWidget->setCurrentIndex(MenuScene);
+
+                           // fade in
+                           fadeWidget(titleMenuLabel, 0, 100, 350);
+                           fadeWidget(playButton, 0, 100, 350);
+                           fadeWidget(infoButton, 0, 100, 350); });
 }

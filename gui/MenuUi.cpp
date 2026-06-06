@@ -12,7 +12,7 @@ void MainWindow::setupMenuUi()
 
     // 1. Duży napis SLOT MACHINE
     titleMenuLabel = new QLabel("SLOT MACHINE", menuWidget);
-    titleMenuLabel->setAlignment(Qt::AlignCenter);
+    titleMenuLabel->setAlignment(Qt::AlignHCenter);
     titleMenuLabel->setStyleSheet("color: #da90ff;"); // Fioletowy, neonowy kolor
 
     QFont titleFont = titleMenuLabel->font();
@@ -20,11 +20,27 @@ void MainWindow::setupMenuUi()
     titleFont.setBold(true);
     titleMenuLabel->setFont(titleFont);
 
-    // 2. Przycisk play pod napisem
+    // Przycisk play pod napisem
     playButton = new QPushButton("PLAY", menuWidget);
     playButton->setFixedWidth(300);
     playButton->setFixedHeight(80);
     playButton->setStyleSheet(R"(
+      QPushButton {
+          background-color: #da90ff;
+          color: black
+          border-radius: 20px;
+          border: 3px solid #da75ff;
+          font-size: 28px;
+          font-weight: bold;
+      }
+      QPushButton:hover { background-color: #daacff; }
+      QPushButton:pressed { background-color: #da57ff; }
+  )");
+    // przycisk info
+    infoButton = new QPushButton("INFO", menuWidget);
+    infoButton->setFixedWidth(300);
+    infoButton->setFixedHeight(80);
+    infoButton->setStyleSheet(R"(
       QPushButton {
           background-color: #da90ff;
           color: black;
@@ -36,10 +52,12 @@ void MainWindow::setupMenuUi()
       QPushButton:hover { background-color: #daacff; }
       QPushButton:pressed { background-color: #da57ff; }
   )");
-    infoButton = new QPushButton("INFO", menuWidget);
-    infoButton->setFixedWidth(300);
-    infoButton->setFixedHeight(80);
-    infoButton->setStyleSheet(R"(
+
+    // przycisk EXIT GAME
+    exitGameButton = new QPushButton("EXIT GAME", menuWidget);
+    exitGameButton->setFixedWidth(300);
+    exitGameButton->setFixedHeight(80);
+    exitGameButton->setStyleSheet(R"(
       QPushButton {
           background-color: #da90ff;
           color: black;
@@ -58,15 +76,18 @@ void MainWindow::setupMenuUi()
     menuLayout->addSpacing(40);
     menuLayout->addWidget(playButton, 0, Qt::AlignCenter);
     menuLayout->addWidget(infoButton, 0, Qt::AlignCenter);
+    menuLayout->addWidget(exitGameButton, 0, Qt::AlignCenter);
     menuLayout->addStretch();
 
     // Podłączenie kliknięcia play -> przejście do gry
     connect(playButton, &QPushButton::clicked, this, &MainWindow::onPlayClicked);
-    //podlaczenie przycisku info -> scena info
+    // podlaczenie przycisku info -> scena info
     connect(infoButton, &QPushButton::clicked, this, &MainWindow::onInfoClicked);
+    // podlaczenie przycisku exitGame
+    connect(exitGameButton, &QPushButton::clicked, this, &QWidget::close);
 }
 
-//MENU -> GRA
+// MENU -> GRA
 void MainWindow::transitionFromMenuToGame()
 {
     // Blokujemy przycisk na czas animacji
@@ -101,7 +122,7 @@ void MainWindow::transitionFromMenuToGame()
         fadeWidget(creditsLabel, 0, 100, 350); });
 }
 
-//MENU->INFO
+// MENU->INFO
 void MainWindow::transitionFromMenuToInfo()
 {
     // Blokujemy przycisk na czas animacji
@@ -115,6 +136,8 @@ void MainWindow::transitionFromMenuToInfo()
     // Po zakończeniu animacji (350ms) przełączamy okno i dbamy o czystość stanów
     QTimer::singleShot(350, this, [this]()
                        {
+                           fadeWidget(titleInfoLabel, 0, 100, 350);
+                           fadeWidget(returnToMenuButton, 0, 100, 350);
                            stackedWidget->setCurrentIndex(InfoScene); // Zmiana na ekran gry
                        });
 }

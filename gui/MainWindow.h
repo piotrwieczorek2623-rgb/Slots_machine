@@ -26,6 +26,7 @@
 #include <QVBoxLayout>
 #include <QFile>
 #include <QStackedWidget>
+//#include <QtWidgets/QApplication>
 
 class MainWindow : public QMainWindow
 {
@@ -70,24 +71,33 @@ private:
 
   QVBoxLayout *panelLayout;
 
-  // menu
+  
   Game *gameLogic;
   QStackedWidget *stackedWidget;
 
+  // labels
   QLabel *titleMenuLabel;
   QLabel *titleInfoLabel;
+  //buttons
   QPushButton *playButton;
   QPushButton *infoButton;
   QPushButton *returnToMenuButton;
+  QPushButton *exitGameButton;
+  // widgets
   QWidget *gameWidget;
   QWidget *menuWidget;
   QWidget *infoWidget;
+  // UI
   void setupMenuUi();
   void setupGameUi();
   void setupInfoUi();
+  // transitions
   void transitionFromMenuToGame();
   void transitionFromGameToMenu();
   void transitionFromMenuToInfo();
+  void transitionFromInfoToMenu();
+  //actions
+  //void exitGame();
 
 public:
   MainWindow(QWidget *parent = nullptr);
@@ -95,8 +105,12 @@ public:
 protected:
   void resizeEvent(QResizeEvent *event) override; // resize
 private slots:
+  //MenuScene buttons
   void onPlayClicked();
   void onInfoClicked();
+  //void onExitClicked();
+  //infoScene buttons
+  void onReturnInfoClicked();
 };
 
 enum ScreenIndex
