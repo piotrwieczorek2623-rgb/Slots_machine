@@ -26,6 +26,7 @@
 #include <QVBoxLayout>
 #include <QFile>
 #include <QStackedWidget>
+#include <QTextBrowser>
 //#include <QtWidgets/QApplication>
 
 class MainWindow : public QMainWindow
@@ -87,6 +88,8 @@ private:
   QWidget *gameWidget;
   QWidget *menuWidget;
   QWidget *infoWidget;
+
+  QTextBrowser *infoTextBrowser;
   // UI
   void setupMenuUi();
   void setupGameUi();

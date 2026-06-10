@@ -27,7 +27,7 @@ void MainWindow::setupMenuUi()
     playButton->setStyleSheet(R"(
       QPushButton {
           background-color: #da90ff;
-          color: black
+          color: black;
           border-radius: 20px;
           border: 3px solid #da75ff;
           font-size: 28px;
@@ -97,6 +97,7 @@ void MainWindow::transitionFromMenuToGame()
     fadeWidget(titleMenuLabel, 100, 0, 350);
     fadeWidget(playButton, 100, 0, 350);
     fadeWidget(infoButton, 100, 0, 350);
+    fadeWidget(exitGameButton, 100, 0, 350);
 
     // Po zakończeniu animacji (350ms) przełączamy okno i dbamy o czystość stanów
     QTimer::singleShot(350, this, [this]()
@@ -132,6 +133,7 @@ void MainWindow::transitionFromMenuToInfo()
     fadeWidget(titleMenuLabel, 100, 0, 350);
     fadeWidget(playButton, 100, 0, 350);
     fadeWidget(infoButton, 100, 0, 350);
+    fadeWidget(exitGameButton, 100, 0, 350);
 
     // Po zakończeniu animacji (350ms) przełączamy okno i dbamy o czystość stanów
     QTimer::singleShot(350, this, [this]()
